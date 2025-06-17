@@ -1,1 +1,316 @@
-<p>cancellation-policy works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancellation Policy - NEXOVA Bus Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .policy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: #003566;
+            margin-bottom: 1rem;
+        }
+
+        .policy-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .policy-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2rem;
+        }
+
+        .policy-section h2 {
+            color: #003566;
+            border-bottom: 2px solid #ffd60a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .policy-section h3 {
+            color: #001d3d;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .policy-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .policy-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: #f0f8ff;
+            border-left: 4px solid #ffd60a;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note {
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #003566;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .contact-support h2 {
+            color: #ffd60a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-support p {
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #ffd60a;
+            color: #003566;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #ffea8a;
+        }
+
+        .charges-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .charges-table th,
+        .charges-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .charges-table th {
+            background-color: #003566;
+            color: white;
+        }
+
+        .charges-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .charges-table tr:hover {
+            background-color: #e6f2ff;
+        }
+
+        @media (max-width: 768px) {
+            .policy-container {
+                padding: 1rem;
+            }
+
+            .policy-header h1 {
+                font-size: 2rem;
+            }
+
+            .policy-content {
+                padding: 1.5rem;
+            }
+
+            .charges-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="policy-container">
+        <div class="policy-header">
+            <h1>Cancellation Policy</h1>
+            <p>Understand our cancellation rules and refund process for your NEXOVA bus bookings.</p>
+        </div>
+
+        <div class="policy-content">
+            <div class="policy-section">
+                <h2>General Cancellation Policy</h2>
+                <p>At NEXOVA, we understand that plans can change. Our cancellation policy is designed to be fair to
+                    both our customers and our bus operators.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Important:</strong> Cancellation charges vary depending on when you cancel your ticket
+                        relative to the departure time. Partial cancellations (for some passengers in a booking) are
+                        allowed in most cases.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2>Cancellation Charges</h2>
+                <p>The cancellation charges are calculated as a percentage of the ticket fare or a flat fee, whichever
+                    is higher:</p>
+
+                <table class="charges-table">
+                    <thead>
+                        <tr>
+                            <th>Time Before Departure</th>
+                            <th>Cancellation Charges</th>
+                            <th>Refund Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>More than 48 hours</td>
+                            <td>10% of fare or ₹50 (whichever is higher)</td>
+                            <td>90% of fare or (fare - ₹50)</td>
+                        </tr>
+                        <tr>
+                            <td>24 to 48 hours</td>
+                            <td>25% of fare or ₹100 (whichever is higher)</td>
+                            <td>75% of fare or (fare - ₹100)</td>
+                        </tr>
+                        <tr>
+                            <td>6 to 24 hours</td>
+                            <td>50% of fare</td>
+                            <td>50% of fare</td>
+                        </tr>
+                        <tr>
+                            <td>Less than 6 hours</td>
+                            <td>100% of fare (No refund)</td>
+                            <td>No refund</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="note">Note: For premium and luxury buses, additional cancellation charges may apply as per
+                    operator policy.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>How to Cancel Your Booking</h2>
+                <h3>Online Cancellation</h3>
+                <p>You can cancel your booking through our website or mobile app:</p>
+                <ul>
+                    <li>Go to 'My Bookings' section</li>
+                    <li>Select the booking you wish to cancel</li>
+                    <li>Click on 'Cancel Ticket'</li>
+                    <li>Confirm the cancellation</li>
+                    <li>Your refund will be processed automatically</li>
+                </ul>
+
+                <h3>Customer Support</h3>
+                <p>If you're unable to cancel online, you can contact our customer support team:</p>
+                <ul>
+                    <li>Call us at +91 9749194428 (24/7 support)</li>
+                    <li>Email us at unayek91&#64;gmail.com</li>
+                    <li>Use the live chat feature on our website/app</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>Refund Process</h2>
+                <h3>Refund Timeline</h3>
+                <ul>
+                    <li><strong>Credit/Debit Cards:</strong> 7-10 business days</li>
+                    <li><strong>Net Banking:</strong> 3-5 business days</li>
+                    <li><strong>UPI Payments:</strong> 1-3 business days</li>
+                    <li><strong>NEXOVA Wallet:</strong> Instant credit</li>
+                </ul>
+
+                <h3>Refund Method</h3>
+                <p>Refunds are processed through the original payment method used for booking. If the original payment
+                    method is not available, we may issue the refund via NEXOVA Wallet or bank transfer.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Important:</strong> In case of bus cancellations by the operator, you will receive a 100%
+                        refund automatically within 24 hours.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2>Special Cases</h2>
+                <h3>Partial Cancellations</h3>
+                <p>If you need to cancel tickets for only some passengers in a booking:</p>
+                <ul>
+                    <li>Partial cancellations are allowed up to 6 hours before departure</li>
+                    <li>Cancellation charges apply only to the cancelled seats</li>
+                    <li>The remaining passengers can travel as scheduled</li>
+                </ul>
+
+                <h3>No-Show Policy</h3>
+                <p>If you don't show up for your bus:</p>
+                <ul>
+                    <li>No refund will be issued</li>
+                    <li>The full ticket amount will be forfeited</li>
+                    <li>You may be able to board a later bus if seats are available (subject to charges)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-support">
+            <h2>Need Help with Cancellation?</h2>
+            <p>Our customer support team is available 24/7 to assist you with cancellations and refunds.</p>
+            <a href="#" class="contact-btn">Contact Support</a>
+        </div>
+    </div>
+</body>
+
+</html>
