@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Bus Tickets - NEXOVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .booking-header h1 {
+            font-size: 2.5rem;
+            color: #003566;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Search Form */
+        .search-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #001d3d;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #003566;
+            box-shadow: 0 0 0 2px rgba(0, 53, 102, 0.2);
+        }
+
+        .date-input {
+            position: relative;
+        }
+
+        .date-input i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .btn-primary {
+            background-color: #ffd60a;
+            color: #003566;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffea8a;
+        }
+
+        /* Available Buses */
+        .buses-list {
+            margin-top: 2rem;
+        }
+
+        .buses-list h2 {
+            color: #003566;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .bus-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .bus-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .bus-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #003566;
+            margin-bottom: 0.5rem;
+        }
+
+        .bus-type {
+            display: inline-block;
+            background-color: #e6f2ff;
+            color: #003566;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .bus-details {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .departure,
+        .arrival {
+            flex: 1;
+        }
+
+        .time {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #003566;
+        }
+
+        .place {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .duration {
+            text-align: center;
+            flex: 1;
+            color: #666;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .duration i {
+            color: #ffd60a;
+            margin: 0.5rem 0;
+        }
+
+        .bus-amenities {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .amenity i {
+            color: #ffd60a;
+        }
+
+        .bus-pricing {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #003566;
+            text-align: right;
+        }
+
+        .seats-available {
+            color: #28a745;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .btn-book {
+            background-color: #003566;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-book:hover {
+            background-color: #001d3d;
+        }
+
+        /* Filter Section */
+        .filters {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filters h3 {
+            color: #003566;
+            margin-bottom: 1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .booking-container {
+                padding: 1rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .bus-card {
+                flex-direction: column;
+            }
+
+            .bus-pricing {
+                align-items: flex-start;
+                margin-top: 1rem;
+            }
+
+            .price {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>Book Bus Tickets</h1>
+            <p>Find and book the best buses for your journey</p>
+        </div>
+
+        <!-- Search Form -->
+        <div class="search-form">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="from">From</label>
+                        <input type="text" id="from" class="form-control" placeholder="Departure City" value="Kolkata">
+                    </div>
+                    <div class="form-group">
+                        <label for="to">To</label>
+                        <input type="text" id="to" class="form-control" placeholder="Destination City" value="Delhi">
+                    </div>
+                    <div class="form-group date-input">
+                        <label for="date">Date of Journey</label>
+                        <input type="date" id="date" class="form-control" value="2025-06-25">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="return-date">Return Date (Optional)</label>
+                        <input type="date" id="return-date" class="form-control">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-search"></i> Search Buses
+                </button>
+            </form>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <h3>Filter Buses</h3>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="bus-type">Bus Type</label>
+                    <select id="bus-type" class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="ac">AC</option>
+                        <option value="non-ac">Non-AC</option>
+                        <option value="sleeper">Sleeper</option>
+                        <option value="seater">Seater</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="operator">Operator</label>
+                    <select id="operator" class="filter-select">
+                        <option value="all">All Operators</option>
+                        <option value="nexova">NEXOVA Express</option>
+                        <option value="sharma">Sharma Travels</option>
+                        <option value="royal">Royal Cruiser</option>
+                        <option value="patel">Patel Bus Service</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="departure-time">Departure Time</label>
+                    <select id="departure-time" class="filter-select">
+                        <option value="all">Any Time</option>
+                        <option value="morning">Morning (6AM-12PM)</option>
+                        <option value="afternoon">Afternoon (12PM-5PM)</option>
+                        <option value="evening">Evening (5PM-10PM)</option>
+                        <option value="night">Night (10PM-6AM)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-range">Price Range</label>
+                    <select id="price-range" class="filter-select">
+                        <option value="all">Any Price</option>
+                        <option value="0-1000">Under ₹1000</option>
+                        <option value="1000-2000">₹1000 - ₹2000</option>
+                        <option value="2000-3000">₹2000 - ₹3000</option>
+                        <option value="3000+">Over ₹3000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Buses -->
+        <div class="buses-list">
+            <h2>Available Buses (5)</h2>
+
+            <!-- Bus Card 1 -->
+            <div class="bus-card">
+                <div class="bus-info">
+                    <div class="bus-name">NEXOVA Express</div>
+                    <span class="bus-type">AC Sleeper</span>
+                    <div class="bus-details">
+                        <div class="departure">
+                            <div class="time">22:30</div>
+                            <div class="place">Kolkata (Esplanade)</div>
+                        </div>
+                        <div class="duration">
+                            <div>14h 30m</div>
+                            <i class="fas fa-arrow-right"></i>
+                            <div>Non-stop</div>
+                        </div>
+                        <div class="arrival">
+                            <div class="time">13:00</div>
+                            <div class="place">Delhi (ISBT)</div>
+                        </div>
+                    </div>
+                    <div class="bus-amenities">
+                        <div class="amenity"><i class="fas fa-snowflake"></i> AC</div>
+                        <div class="amenity"><i class="fas fa-tv"></i> TV</div>
+                        <div class="amenity"><i class="fas fa-wifi"></i> WiFi</div>
+                        <div class="amenity"><i class="fas fa-plug"></i> Charging</div>
+                        <div class="amenity"><i class="fas fa-utensils"></i> Snacks</div>
+                    </div>
+                </div>
+                <div class="bus-pricing">
+                    <div class="price">₹1,799</div>
+                    <div class="seats-available">12 seats left</div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Bus Card 2 -->
+            <div class="bus-card">
+                <div class="bus-info">
+                    <div class="bus-name">Sharma Travels</div>
+                    <span class="bus-type">Non-AC Seater</span>
+                    <div class="bus-details">
+                        <div class="departure">
+                            <div class="time">19:00</div>
+                            <div class="place">Kolkata (Dum Dum)</div>
+                        </div>
+                        <div class="duration">
+                            <div>16h 0m</div>
+                            <i class="fas fa-arrow-right"></i>
+                            <div>2 stops</div>
+                        </div>
+                        <div class="arrival">
+                            <div class="time">11:00</div>
+                            <div class="place">Delhi (Anand Vihar)</div>
+                        </div>
+                    </div>
+                    <div class="bus-amenities">
+                        <div class="amenity"><i class="fas fa-bus"></i> Non-AC</div>
+                        <div class="amenity"><i class="fas fa-tv"></i> TV</div>
+                        <div class="amenity"><i class="fas fa-utensils"></i> Snacks</div>
+                    </div>
+                </div>
+                <div class="bus-pricing">
+                    <div class="price">₹1,199</div>
+                    <div class="seats-available">24 seats left</div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Bus Card 3 -->
+            <div class="bus-card">
+                <div class="bus-info">
+                    <div class="bus-name">Royal Cruiser</div>
+                    <span class="bus-type">AC Sleeper (2+1)</span>
+                    <div class="bus-details">
+                        <div class="departure">
+                            <div class="time">21:15</div>
+                            <div class="place">Kolkata (Esplanade)</div>
+                        </div>
+                        <div class="duration">
+                            <div>15h 15m</div>
+                            <i class="fas fa-arrow-right"></i>
+                            <div>Non-stop</div>
+                        </div>
+                        <div class="arrival">
+                            <div class="time">12:30</div>
+                            <div class="place">Delhi (ISBT)</div>
+                        </div>
+                    </div>
+                    <div class="bus-amenities">
+                        <div class="amenity"><i class="fas fa-snowflake"></i> AC</div>
+                        <div class="amenity"><i class="fas fa-wifi"></i> WiFi</div>
+                        <div class="amenity"><i class="fas fa-plug"></i> Charging</div>
+                        <div class="amenity"><i class="fas fa-utensils"></i> Meals</div>
+                        <div class="amenity"><i class="fas fa-blanket"></i> Blanket</div>
+                    </div>
+                </div>
+                <div class="bus-pricing">
+                    <div class="price">₹2,499</div>
+                    <div class="seats-available">6 seats left</div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

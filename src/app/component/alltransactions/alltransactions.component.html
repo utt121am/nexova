@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction History - NEXOVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .transactions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            color: #003566;
+            font-weight: 600;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding-left: 2.5rem;
+            width: 250px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .transaction-summary {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .summary-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+        }
+
+        .summary-card h3 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-card .amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .summary-card .positive {
+            color: #28a745;
+        }
+
+        .summary-card .negative {
+            color: #dc3545;
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .transactions-table th {
+            background-color: #003566;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .transactions-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transactions-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .transactions-table tr:hover {
+            background-color: #f5f9ff;
+        }
+
+        .transaction-id {
+            color: #003566;
+            font-weight: 500;
+        }
+
+        .transaction-amount.credit {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .transaction-amount.debit {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .transaction-status {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-failed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #003566;
+            color: white;
+            border-color: #003566;
+        }
+
+        .pagination button.active {
+            background-color: #003566;
+            color: white;
+            border-color: #003566;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .no-transactions {
+            text-align: center;
+            padding: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-transactions i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .no-transactions h3 {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-transactions p {
+            color: #777;
+        }
+
+        .export-btn {
+            background-color: #003566;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .export-btn:hover {
+            background-color: #00274d;
+        }
+
+        @media (max-width: 768px) {
+            .transactions-container {
+                padding: 1rem;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-controls {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .transactions-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .summary-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transactions-container">
+        <div class="page-header">
+            <h1 class="page-title">Transaction History</h1>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="time-period">Period:</label>
+                    <select id="time-period">
+                        <option value="all">All Time</option>
+                        <option value="7days">Last 7 Days</option>
+                        <option value="30days" selected>Last 30 Days</option>
+                        <option value="90days">Last 90 Days</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="transaction-type">Type:</label>
+                    <select id="transaction-type">
+                        <option value="all">All Transactions</option>
+                        <option value="credit">Credits</option>
+                        <option value="debit">Debits</option>
+                        <option value="booking">Bookings</option>
+                        <option value="refund">Refunds</option>
+                    </select>
+                </div>
+                <div class="filter-group search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search transactions..." aria-label="Search transactions">
+                </div>
+                <button class="export-btn">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </div>
+
+        <div class="transaction-summary">
+            <div class="summary-card">
+                <h3>Total Balance</h3>
+                <div class="amount positive">₹2,450.00</div>
+            </div>
+            <div class="summary-card">
+                <h3>Total Credits</h3>
+                <div class="amount positive">₹5,200.00</div>
+            </div>
+            <div class="summary-card">
+                <h3>Total Debits</h3>
+                <div class="amount negative">₹2,750.00</div>
+            </div>
+            <div class="summary-card">
+                <h3>Pending Transactions</h3>
+                <div class="amount negative">₹350.00</div>
+            </div>
+        </div>
+
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date & Time</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="transaction-id">NXV785412369</td>
+                    <td>15 Jun 2025, 10:45 AM</td>
+                    <td>Bus Booking - KOL to DEL</td>
+                    <td class="transaction-amount debit">-₹1,250.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV963258741</td>
+                    <td>12 Jun 2025, 04:30 PM</td>
+                    <td>Wallet Top-up (UPI)</td>
+                    <td class="transaction-amount credit">+₹2,000.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV456123789</td>
+                    <td>08 Jun 2025, 09:15 AM</td>
+                    <td>Bus Booking - MUM to BLR</td>
+                    <td class="transaction-amount debit">-₹1,500.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV321654987</td>
+                    <td>05 Jun 2025, 02:20 PM</td>
+                    <td>Booking Cancellation Refund</td>
+                    <td class="transaction-amount credit">+₹1,125.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV789123456</td>
+                    <td>01 Jun 2025, 11:30 AM</td>
+                    <td>Referral Bonus</td>
+                    <td class="transaction-amount credit">+₹500.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV852963741</td>
+                    <td>28 May 2025, 03:45 PM</td>
+                    <td>Bus Booking - CHE to HYD</td>
+                    <td class="transaction-amount debit">-₹750.00</td>
+                    <td><span class="transaction-status status-failed">Failed</span></td>
+                    <td><a href="#" style="color: #003566;">Retry</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV147258369</td>
+                    <td>25 May 2025, 08:10 AM</td>
+                    <td>Wallet Top-up (Card)</td>
+                    <td class="transaction-amount credit">+₹1,000.00</td>
+                    <td><span class="transaction-status status-pending">Pending</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+                <tr>
+                    <td class="transaction-id">NXV369258147</td>
+                    <td>20 May 2025, 06:30 PM</td>
+                    <td>Bus Booking - DEL to JAI</td>
+                    <td class="transaction-amount debit">-₹600.00</td>
+                    <td><span class="transaction-status status-completed">Completed</span></td>
+                    <td><a href="#" style="color: #003566;">Details</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button disabled><i class="fas fa-chevron-left"></i> Previous</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Uncomment this section to show when there are no transactions -->

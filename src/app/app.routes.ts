@@ -9,6 +9,10 @@ import { ContactSupportComponent } from './component/contact-support/contact-sup
 import { PrivacyPolicyComponent } from './component/privacy-policy/privacy-policy.component';
 import { CancellationPolicyComponent } from './component/cancellation-policy/cancellation-policy.component';
 import { HelpCenterComponent } from './component/help-center/help-center.component';
+import { AlltransactionsComponent } from './component/alltransactions/alltransactions.component';
+import { BookticketsComponent } from './component/booktickets/booktickets.component';
+import { TrackBusComponent } from './component/track-bus/track-bus.component';
+import { OffersComponent } from './component/offers/offers.component';
 
 export const routes: Routes = [
     {
@@ -50,5 +54,21 @@ export const routes: Routes = [
     {
         path: "helpcenter",
         component: HelpCenterComponent
+    },
+    {
+        path: "alltransactions",
+        component: AlltransactionsComponent
+    },
+    {
+        path: "book-tickets",
+        component: BookticketsComponent
+    },
+    {
+        path: "track-buses",
+        component: TrackBusComponent
+    },
+    {
+        path: "offers",
+        component: OffersComponent
     }
 ];
