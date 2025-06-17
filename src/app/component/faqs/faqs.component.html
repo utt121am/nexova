@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs - NEXOVA Bus Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h1 {
+            font-size: 2.5rem;
+            color: #003566;
+            margin-bottom: 1rem;
+        }
+
+        .faq-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            color: #003566;
+            border-bottom: 2px solid #ffd60a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #001d3d;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f8ff;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: #ffd60a;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            padding-left: 3rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #003566;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .contact-support h2 {
+            color: #ffd60a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-support p {
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #ffd60a;
+            color: #003566;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #ffea8a;
+        }
+
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 1rem;
+            }
+
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about booking, payments, cancellations, and more with NEXOVA Bus
+                Booking.</p>
+        </div>
+
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search FAQs..." aria-label="Search FAQs">
+        </div>
+
+        <div class="faq-section">
+            <h2>Booking & Tickets</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I book a bus ticket on NEXOVA?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Booking a bus ticket on NEXOVA is simple. Just enter your departure and destination cities,
+                        select your travel date, and choose from the available buses. After selecting your preferred bus
+                        and seats, proceed to payment to complete your booking.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I book tickets for multiple passengers?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can book tickets for up to 6 passengers in a single transaction. Simply select the
+                        number of passengers when choosing your seats.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there a mobile app for NEXOVA?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, NEXOVA has a mobile app available for both Android and iOS devices. You can download it from
+                        the Google Play Store or Apple App Store.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Payments & Refunds</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What payment methods do you accept?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept various payment methods including credit/debit cards, net banking, UPI payments (Google
+                        Pay, PhonePe, etc.), and NEXOVA Wallet.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to process a refund?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Refunds are typically processed within 7-10 business days. The exact time depends on your bank or
+                        payment provider.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are there any cancellation charges?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Cancellation charges vary depending on when you cancel your ticket. Generally, cancellations made
+                        more than 24 hours before departure have lower charges. Please check our cancellation policy for
+                        detailed information.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Travel & Boarding</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What documents do I need to board the bus?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You need to present either a printed copy of your ticket or show the e-ticket on your mobile
+                        device along with a valid government-issued photo ID.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How early should I arrive at the boarding point?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We recommend arriving at least 30 minutes before the scheduled departure time to ensure a smooth
+                        boarding process.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I track my bus in real-time?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can track your bus in real-time through our website or mobile app. Just go to the "Track
+                        Bus" section and enter your booking details.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-support">
+            <h2>Still have questions?</h2>
+            <p>If you didn't find the answer you were looking for, our customer support team is available 24/7 to assist
+                you.</p>
+            <a href="#" class="contact-btn">Contact Support</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('.search-container input');
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                const questions = document.querySelectorAll('.faq-question');
+
+                questions.forEach(question => {
+                    const item = question.parentElement;
+                    const questionText = question.textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

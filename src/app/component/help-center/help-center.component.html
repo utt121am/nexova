@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Center - NEXOVA Bus Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .help-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .help-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .help-header h1 {
+            font-size: 2.5rem;
+            color: #003566;
+            margin-bottom: 1rem;
+        }
+
+        .help-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .help-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .help-card i {
+            font-size: 2.5rem;
+            color: #ffd60a;
+            margin-bottom: 1.5rem;
+        }
+
+        .help-card h3 {
+            color: #001d3d;
+            margin-bottom: 1rem;
+        }
+
+        .help-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .help-link {
+            display: inline-block;
+            color: #003566;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .help-link:hover {
+            color: #ffd60a;
+        }
+
+        .help-link i {
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            color: inherit;
+        }
+
+        .popular-topics {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: #003566;
+            border-bottom: 2px solid #ffd60a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .topic-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .topic-item h3 {
+            color: #001d3d;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-item p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            background-color: #003566;
+            border-radius: 8px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #ffd60a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-method:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            color: #ffd60a;
+        }
+
+        .contact-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #ffd60a;
+            color: #003566;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffea8a;
+        }
+
+        @media (max-width: 768px) {
+            .help-container {
+                padding: 1rem;
+            }
+
+            .help-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-method {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="help-container">
+        <div class="help-header">
+            <h1>How can we help you today?</h1>
+            <p>Find answers to your questions or get in touch with our support team for personalized assistance.</p>
+        </div>
+
+        <div class="help-grid">
+            <div class="help-card" onclick="location.href='#';">
+                <i class="fas fa-ticket-alt"></i>
+                <h3>Booking & Tickets</h3>
+                <p>Learn how to book tickets, manage reservations, and understand ticket policies.</p>
+                <a href="#" class="help-link">View details <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="help-card" onclick="location.href='#';">
+                <i class="fas fa-credit-card"></i>
+                <h3>Payments & Refunds</h3>
+                <p>Information about payment methods, refund processes, and cancellation policies.</p>
+                <a href="#" class="help-link">View details <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="help-card" onclick="location.href='#';">
+                <i class="fas fa-bus"></i>
+                <h3>Travel Information</h3>
+                <p>Details about boarding procedures, bus amenities, and travel requirements.</p>
+                <a href="#" class="help-link">View details <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="help-card" onclick="location.href='#';">
+                <i class="fas fa-user-circle"></i>
+                <h3>Account Help</h3>
+                <p>Manage your account, update profile information, and troubleshoot login issues.</p>
+                <a href="#" class="help-link">View details <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+        <div class="popular-topics">
+            <h2 class="section-title">Popular Help Topics</h2>
+            <div class="topics-grid">
+                <div class="topic-item">
+                    <h3>How do I cancel my bus ticket?</h3>
+                    <p>Learn about our cancellation policy and how to request a refund for your booking.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="topic-item">
+                    <h3>What documents do I need to board the bus?</h3>
+                    <p>Information about required identification and travel documents for boarding.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="topic-item">
+                    <h3>How can I change my travel date?</h3>
+                    <p>Steps to modify your booking and change your travel date or time.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="topic-item">
+                    <h3>Where can I find my boarding point?</h3>
+                    <p>Locate your boarding point and get directions to the departure location.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="topic-item">
+                    <h3>How does the NEXOVA Wallet work?</h3>
+                    <p>Learn how to add money, make payments, and use wallet benefits.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="topic-item">
+                    <h3>What amenities are available on the bus?</h3>
+                    <p>Information about onboard facilities, seating options, and comfort features.</p>
+                    <a href="#" class="help-link">Read more <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Need more help?</h2>
+            <p>Our customer support team is available 24/7 to assist you with any questions or issues you may have.</p>
+            <a href="#" class="btn">Contact Support</a>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <h4>Call Us</h4>
+                        <p>+91 9876543210</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-info">
+                        <h4>Email Us</h4>
+                        <p>unayek&#64;gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-comments"></i>
+                    <div class="contact-info">
+                        <h4>Live Chat</h4>
+                        <p>Available 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make help cards clickable
+            const helpCards = document.querySelectorAll('.help-card');
+            helpCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const link = this.querySelector('a');
+                    if (link) {
+                        window.location.href = link.href;
+                    }
+                });
+            });
+
+            // Make topic items clickable
+            const topicItems = document.querySelectorAll('.topic-item');
+            topicItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const link = this.querySelector('a');
+                    if (link) {
+                        window.location.href = link.href;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
