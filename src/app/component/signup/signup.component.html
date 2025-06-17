@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | NEXOVA Bus Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .signup-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .signup-image {
+            flex: 1;
+            background: linear-gradient(rgba(0, 53, 102, 0.8), rgba(0, 29, 61, 0.8)),
+                url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            color: white;
+        }
+
+        .signup-image h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .signup-image p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .signup-form-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            background: white;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .logo a {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #003566;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #ffd60a;
+        }
+
+        .signup-form h2 {
+            font-size: 1.8rem;
+            color: #003566;
+            margin-bottom: 5px;
+        }
+
+        .signup-form p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #003566;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #003566;
+            box-shadow: 0 0 0 3px rgba(0, 53, 102, 0.1);
+            outline: none;
+        }
+
+        .name-fields {
+            display: flex;
+            gap: 15px;
+        }
+
+        .name-fields .form-group {
+            flex: 1;
+        }
+
+        .password-strength {
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0%;
+            background: #ffd60a;
+            transition: all 0.3s ease;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .terms input {
+            margin-right: 8px;
+            margin-top: 3px;
+        }
+
+        .terms label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .terms a {
+            color: #003566;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-btn {
+            width: 100%;
+            background-color: #ffd60a;
+            color: #003566;
+            border: none;
+            padding: 14px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .signup-btn:hover {
+            background-color: #ffea8a;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #666;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .divider::before {
+            margin-right: 10px;
+        }
+
+        .divider::after {
+            margin-left: 10px;
+        }
+
+        .social-signup {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: #003566;
+            transform: translateY(-2px);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+
+        .google-btn i {
+            color: #DB4437;
+        }
+
+        .facebook-btn i {
+            color: #4267B2;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #003566;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .signup-image h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+            }
+
+            .signup-image {
+                padding: 60px 5%;
+                text-align: center;
+            }
+
+            .signup-image h1 {
+                font-size: 2rem;
+                margin: 0 auto 15px;
+            }
+
+            .signup-image p {
+                margin: 0 auto;
+            }
+
+            .signup-form-container {
+                max-width: 100%;
+                padding: 40px 5%;
+            }
+
+            .name-fields {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup-image h1 {
+                font-size: 1.8rem;
+            }
+
+            .social-signup {
+                flex-direction: column;
+            }
+
+            .logo a {
+                font-size: 1.8rem;
+            }
+
+            .signup-form h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <div class="signup-image">
+            <h1>Join NEXOVA Today</h1>
+            <p>Create your account to book buses, manage your trips, and enjoy exclusive member benefits.</p>
+        </div>
+
+        <div class="signup-form-container">
+            <div class="logo">
+                <a href="#"><i class="fas fa-bus-alt"></i> NEXOVA</a>
+            </div>
+
+            <form class="signup-form">
+                <h2>Create Your Account</h2>
+                <p>Fill in your details to get started</p>
+
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" class="form-control" placeholder="Enter your first name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" class="form-control" placeholder="Enter your last name"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                    <div class="password-strength">
+                        <div class="strength-meter" id="strength-meter"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="form-control"
+                        placeholder="Confirm your password" required>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                            Policy</a></label>
+                </div>
+
+                <button type="submit" class="signup-btn">Sign Up</button>
+
+                <div class="divider">or sign up with</div>
+
+                <div class="social-signup">
+                    <button type="button" class="social-btn google-btn">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+
+                <p class="login-link">Already have an account? <a routerLink="login">Log in</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple password strength indicator
+        const passwordInput = document.getElementById('password');
+        const strengthMeter = document.getElementById('strength-meter');
+
+        passwordInput.addEventListener('input', function () {
+            const password = this.value;
+            let strength = 0;
+
+            // Check for length
+            if (password.length >= 8) strength += 25;
+            if (password.length >= 12) strength += 25;
+
+            // Check for special characters
+            if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 25;
+
+            // Check for numbers and letters
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 15;
+            if (/\d/.test(password)) strength += 10;
+
+            strengthMeter.style.width = Math.min(strength, 100) + '%';
+
+            if (strength < 40) {
+                strengthMeter.style.backgroundColor = '#ff4d4d';
+            } else if (strength < 70) {
+                strengthMeter.style.backgroundColor = '#ffd60a';
+            } else {
+                strengthMeter.style.backgroundColor = '#4CAF50';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Wallet | NEXOVA Bus Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #003566 0%, #001d3d 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #ffd60a;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd60a;
+        }
+
+        .wallet-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        .wallet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .wallet-title {
+            font-size: 2.2rem;
+            color: #003566;
+            font-weight: 700;
+        }
+
+        .add-money-btn {
+            background-color: #ffd60a;
+            color: #003566;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-money-btn:hover {
+            background-color: #ffea8a;
+            transform: translateY(-2px);
+        }
+
+        .wallet-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #003566 0%, #001d3d 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: #ffd60a;
+        }
+
+        .balance-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .balance-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .transactions-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #003566;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .transaction-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #f0f7ff;
+            color: #003566;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #003566;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background: #003566;
+            color: white;
+        }
+
+        .transactions-list {
+            list-style: none;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transaction-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #003566;
+        }
+
+        .transaction-details h4 {
+            font-size: 1rem;
+            color: #003566;
+            margin-bottom: 5px;
+        }
+
+        .transaction-details p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+        }
+
+        .credit {
+            color: #4CAF50;
+        }
+
+        .debit {
+            color: #F44336;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .view-all-btn {
+            color: #003566;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-all-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .wallet-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+            }
+
+            .wallet-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .quick-actions {
+                flex-wrap: wrap;
+            }
+
+            .transaction-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .transaction-amount {
+                margin-left: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wallet-title {
+                font-size: 1.8rem;
+            }
+
+            .balance-amount {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#"><i class="fas fa-bus-alt"></i> NEXOVA</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Book Tickets</a></li>
+                <li><a href="#">My Bookings</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <div class="wallet-container">
+        <div class="wallet-header">
+            <h1 class="wallet-title">My Wallet</h1>
+            <button class="add-money-btn">
+                <i class="fas fa-plus"></i> Add Money
+            </button>
+        </div>
+
+        <div class="wallet-cards">
+            <div class="balance-card">
+                <div class="card-header">
+                    <span class="card-title">Available Balance</span>
+                    <i class="fas fa-wallet card-icon"></i>
+                </div>
+                <div class="balance-amount">₹1,245.50</div>
+                <span class="balance-label">Last updated: Today, 10:45 AM</span>
+
+                <div class="quick-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-plus"></i> Add Money
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-exchange-alt"></i> Transfer
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-history"></i> History
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="transactions-section">
+            <h2 class="section-title">Recent Transactions</h2>
+
+            <div class="transaction-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Credits</button>
+                <button class="filter-btn">Debits</button>
+                <button class="filter-btn">Bookings</button>
+                <button class="filter-btn">Refunds</button>
+            </div>
+
+            <ul class="transactions-list">
+                <li class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Bus Ticket Booking</h4>
+                            <p>Today, 10:30 AM • Booking ID: NX78945</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount debit">- ₹845.00</div>
+                </li>
+
+                <li class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Wallet Top-up</h4>
+                            <p>Yesterday, 4:15 PM • UPI Transaction</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount credit">+ ₹1,000.00</div>
+                </li>
+
+                <li class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Bus Ticket Booking</h4>
+                            <p>Mar 15, 2024 • Booking ID: NX78123</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount debit">- ₹650.00</div>
+                </li>
+
+                <li class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Refund Received</h4>
+                            <p>Mar 10, 2024 • Cancellation ID: CN45678</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount credit">+ ₹720.00</div>
+                </li>
+
+                <li class="transaction-item">
+                    <div class="transaction-info">
+                        <div class="transaction-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <h4>Bus Ticket Booking</h4>
+                            <p>Mar 5, 2024 • Booking ID: NX77896</p>
+                        </div>
+                    </div>
+                    <div class="transaction-amount debit">- ₹560.00</div>
+                </li>
+            </ul>
+
+            <div class="view-all">
+                <a href="#" class="view-all-btn">
+                    View All Transactions <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXOVA - Smart Bus Booking Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head> -->
+
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Journey Begins with NEXOVA</h1>
+            <p>Discover seamless bus travel with our advanced booking platform. Comfort, safety, and affordability
+                combined.</p>
+            <a href="#" class="cta-button">Book Your Ticket Now</a>
+        </div>
+    </section>
+
+    <div class="search-form">
+        <form>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="from">From</label>
+                    <input type="text" id="from" class="form-control" placeholder="Departure city">
+                </div>
+                <div class="form-group">
+                    <label for="to">To</label>
+                    <input type="text" id="to" class="form-control" placeholder="Destination city">
+                </div>
+                <div class="form-group">
+                    <label for="date">Departure Date</label>
+                    <input type="date" id="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <select id="passengers" class="form-control">
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">Search Buses</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="section-container features">
+        <div class="section-inner">
+            <h2 class="section-title">Why Travel with NEXOVA?</h2>
+            <p class="section-subtitle">Experience the future of bus travel with our innovative platform</p>
+
+            <!-- <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Booking</h3>
+                    <p class="feature-desc">Secure your seat in seconds with our streamlined booking process.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Live Tracking</h3>
+                    <p class="feature-desc">Real-time bus location updates and accurate arrival predictions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Safe Travel</h3>
+                    <p class="feature-desc">Verified operators and strict safety measures for all journeys.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="feature-title">Exclusive Offers</h3>
+                    <p class="feature-desc">Special discounts for students, seniors, and frequent travelers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="feature-title">Flexible Payments</h3>
+                    <p class="feature-desc">Multiple payment options including EMI and digital wallets.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Dedicated customer service team available round the clock.</p>
+                </div>
+
+            </div> -->
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Booking</h3>
+                    <p class="feature-desc">Secure your seat in seconds with our streamlined booking process.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Live Tracking</h3>
+                    <p class="feature-desc">Real-time bus location updates and accurate arrival predictions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Safe Travel</h3>
+                    <p class="feature-desc">Verified operators and strict safety measures for all journeys.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="feature-title">Exclusive Offers</h3>
+                    <p class="feature-desc">Special discounts for students, seniors, and frequent travelers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="feature-title">Flexible Payments</h3>
+                    <p class="feature-desc">Multiple payment options including EMI and digital wallets.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Dedicated customer service team available round the clock.</p>
+                </div>
+
+                <!-- Additional Feature Cards -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">Book and manage your trips easily from any mobile device.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="feature-title">E-Ticket Support</h3>
+                    <p class="feature-desc">Go paperless with instant e-ticket delivery and QR code scanning.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title">Verified Drivers</h3>
+                    <p class="feature-desc">All drivers are background-checked and trained professionals.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">On-Time Guarantee</h3>
+                    <p class="feature-desc">Punctual departures and arrivals with real-time updates.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section-container popular-routes">
+        <div class="section-inner">
+            <h2 class="section-title">Popular Bus Routes</h2>
+            <p class="section-subtitle">Top destinations our customers travel to frequently</p>
+
+            <!-- <div class="routes-grid">
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3 class="route-name">Bangalore to Chennai</h3>
+                    <div class="route-price">From ₹499</div>
+                    <p class="route-desc">Comfortable AC buses with multiple daily departures</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="route-name">Delhi to Manali</h3>
+                    <div class="route-price">From ₹899</div>
+                    <p class="route-desc">Scenic journey with premium sleeper coaches</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="route-name">Mumbai to Goa</h3>
+                    <div class="route-price">From ₹699</div>
+                    <p class="route-desc">Luxury buses with onboard entertainment</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-monument"></i>
+                    </div>
+                    <h3 class="route-name">Kolkata to Puri</h3>
+                    <div class="route-price">From ₹599</div>
+                    <p class="route-desc">Frequent services with comfortable seating</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+            </div> -->
+
+            <div class="routes-grid">
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3 class="route-name">Bangalore to Chennai</h3>
+                    <div class="route-price">From ₹499</div>
+                    <p class="route-desc">Comfortable AC buses with multiple daily departures</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="route-name">Delhi to Manali</h3>
+                    <div class="route-price">From ₹899</div>
+                    <p class="route-desc">Scenic journey with premium sleeper coaches</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="route-name">Mumbai to Goa</h3>
+                    <div class="route-price">From ₹699</div>
+                    <p class="route-desc">Luxury buses with onboard entertainment</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-monument"></i>
+                    </div>
+                    <h3 class="route-name">Kolkata to Puri</h3>
+                    <div class="route-price">From ₹599</div>
+                    <p class="route-desc">Frequent services with comfortable seating</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="route-name">Hyderabad to Vijayawada</h3>
+                    <div class="route-price">From ₹499</div>
+                    <p class="route-desc">Fast and safe services with modern fleet</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3 class="route-name">Ahmedabad to Surat</h3>
+                    <div class="route-price">From ₹299</div>
+                    <p class="route-desc">Economical and punctual bus options available</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-bus-alt"></i>
+                    </div>
+                    <h3 class="route-name">Lucknow to Kanpur</h3>
+                    <div class="route-price">From ₹299</div>
+                    <p class="route-desc">Hourly buses with quick connections</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-archway"></i>
+                    </div>
+                    <h3 class="route-name">Chennai to Pondicherry</h3>
+                    <div class="route-price">From ₹399</div>
+                    <p class="route-desc">Smooth coastal route with multiple operators</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="route-name">Delhi to Jaipur</h3>
+                    <div class="route-price">From ₹499</div>
+                    <p class="route-desc">Fast highway trips with semi-sleeper options</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="route-name">Kolkata to Digha</h3>
+                    <div class="route-price">From ₹399</div>
+                    <p class="route-desc">Beachside trip with daily early morning departures</p>
+                    <a href="#" class="route-btn">View Buses</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section-container bus-types">
+        <div class="section-inner">
+            <h2 class="section-title">Our Bus Categories</h2>
+            <p class="section-subtitle">Choose the perfect ride for your journey</p>
+
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-image"
+                        style="background-image: url('https://dreamlinercoaches.com/wp-content/uploads/2018/01/feature5.jpg');">
+                    </div>
+                    <div class="type-info">
+                        <h3 class="type-name">Luxury AC Sleeper</h3>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Fully reclining beds</li>
+                            <li><i class="fas fa-check"></i> Personal charging ports</li>
+                            <li><i class="fas fa-check"></i> Onboard entertainment</li>
+                            <li><i class="fas fa-check"></i> Blanket & pillow provided</li>
+                        </ul>
+                        <a href="#" class="route-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-image"
+                        style="background-image: url('https://t4.ftcdn.net/jpg/11/62/61/25/360_F_1162612546_c61sXyp3rCeQN9KqQHrGOgitvLowL3YO.jpg');">
+                    </div>
+                    <div class="type-info">
+                        <h3 class="type-name">Premium AC Seater</h3>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Extra legroom seats</li>
+                            <li><i class="fas fa-check"></i> Adjustable headrests</li>
+                            <li><i class="fas fa-check"></i> Individual AC vents</li>
+                            <li><i class="fas fa-check"></i> Snack service available</li>
+                        </ul>
+                        <a href="#" class="route-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-image"
+                        style="background-image: url('https://motownindia.com/images/Commercial-Vehicles/Volvo-showcases-new-Coach-Bus-range-at-Busworld-2016-Motown-India-Bureau-1-327.jpg');">
+                    </div>
+                    <div class="type-info">
+                        <h3 class="type-name">Economy Non-AC</h3>
+                        <ul class="type-features">
+                            <li><i class="fas fa-check"></i> Affordable fares</li>
+                            <li><i class="fas fa-check"></i> Comfortable seating</li>
+                            <li><i class="fas fa-check"></i> Frequent departures</li>
+                            <li><i class="fas fa-check"></i> Ideal for short trips</li>
+                        </ul>
+                        <a href="#" class="route-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container app-download">
+        <div class="section-inner">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2>Download the NEXOVA App</h2>
+                    <p>Get exclusive mobile-only deals and manage your bookings on the go. Our app makes bus travel
+                        simpler than ever before.</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-btn">
+                            <i class="fab fa-apple"></i>
+                            <div class="app-btn-text">
+                                <small>Download on the</small>
+                                <span>App Store</span>
+                            </div>
+                        </a>
+                        <a href="#" class="app-btn">
+                            <i class="fab fa-google-play"></i>
+                            <div class="app-btn-text">
+                                <small>Get it on</small>
+                                <span>Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="app-image">
+                    <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                        alt="NEXOVA Mobile App">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container stats">
+        <div class="section-inner">
+            <h2 class="section-title">NEXOVA in Numbers</h2>
+            <p class="section-subtitle">Trusted by travelers across the country</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Daily Bookings</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Bus Operators</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Routes Covered</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- </html> -->
