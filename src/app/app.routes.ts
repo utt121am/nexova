@@ -16,7 +16,7 @@ import { OffersComponent } from './component/offers/offers.component';
 
 export const routes: Routes = [
     {
-        path: 'home',
+        path: '',
         component: HomeComponent
     },
     {
