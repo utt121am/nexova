@@ -19,13 +19,18 @@
       <label for="menu-toggle" class="menu-icon" aria-label="Toggle menu"><i class="fas fa-bars"></i></label>
 
       <ul class="nav-links">
-        <li><a routerLink="book-tickets">Book Tickets</a></li>
-        <li><a routerLink="routes">Routes</a></li>
-        <li><a routerLink="schedule">Schedule</a></li>
-        <li><a routerLink="mybookings">My Bookings</a></li>
-        <li><a routerLink="offers">Offers</a></li>
-        <li><a routerLink="track-buses"><i class="fas fa-map-marker-alt"></i> Track Bus</a></li>
-        <li><a routerLink="wallet"><i class="fas fa-wallet"></i> Wallet</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="book-tickets">Book
+            Tickets</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="routes">Routes</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="schedule">Schedule</a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="mybookings">My
+            Bookings</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="offers">Offers</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="track-buses"><i
+              class="fas fa-map-marker-alt"></i> Track Bus</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="wallet"><i
+              class="fas fa-wallet"></i> Wallet</a></li>
       </ul>
 
       <div class="navbar-right">

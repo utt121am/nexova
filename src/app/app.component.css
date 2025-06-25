@@ -108,6 +108,12 @@ header {
     transition: all 0.3s;
 }
 
+.nav-links li.active a {
+    color: #ffda37;
+    font-weight: bold;
+    border-bottom: 2px solid #ffda37;
+}
+
 /* ...................... */
 
 .auth-buttons .login {
